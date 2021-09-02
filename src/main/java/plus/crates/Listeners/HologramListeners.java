@@ -10,7 +10,7 @@ import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
-import org.bukkit.event.world.ChunkLoadEvent;
+import org.bukkit.event.world.EntitiesLoadEvent;
 import plus.crates.Crate;
 import plus.crates.CratesPlus;
 import plus.crates.Utils.Hologram;
@@ -26,8 +26,8 @@ public class HologramListeners implements Listener {
     }
 
     @EventHandler
-    public void onChunkLoad(ChunkLoadEvent event) {
-        for (Entity entity : event.getChunk().getEntities()) {
+    public void onChunkLoad(EntitiesLoadEvent event) {
+        for (Entity entity : event.getEntities()) {
             if (entity instanceof Player)
                 loadHolograms((Player) entity, entity.getLocation());
         }
